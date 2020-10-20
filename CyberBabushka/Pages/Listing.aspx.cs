@@ -3,14 +3,37 @@ using CyberBabushka.Models.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using CyberBabushka.Pages.Helpers;
+using System.Web.Routing;
 
 namespace CyberBabushka.Pages
 {
     public partial class Listing : System.Web.UI.Page
     {
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (IsPostBack)
+            {
+                int selectedProductId;
+                if (int.TryParse(Request.Form["add"], out selectedProductId))
+                {
+                    Product selectedProduct = repository.Products
+                        .Where(g => g.ProductId == selectedProductId).FirstOrDefault();
+
+                    if (selectedProduct != null)
+                    {
+                        SessionHelper.GetCart(Session).AddItem(selectedProduct, 1);
+                        SessionHelper.Set(Session, SessionKey.RETURN_URL,
+                            Request.RawUrl);
+
+                        Response.Redirect(RouteTable.Routes
+                            .GetVirtualPath(null, "cart", null).VirtualPath);
+                    }
+                }
+            }
+        }
+
         private Repository repository = new Repository();
         private int pageSize = 4;
         protected int CurrentPage
@@ -57,10 +80,6 @@ namespace CyberBabushka.Pages
             return currentCategory == null ? products :
                 products.Where(p => p.Category == currentCategory);
         }
-
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
