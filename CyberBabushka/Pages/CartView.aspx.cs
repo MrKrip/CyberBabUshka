@@ -6,6 +6,7 @@ using System.Web.Routing;
 using CyberBabushka.Models;
 using CyberBabushka.Pages.Helpers;
 
+
 namespace CyberBabushka.Pages
 {
     public partial class CartView : System.Web.UI.Page
@@ -15,14 +16,14 @@ namespace CyberBabushka.Pages
             if (IsPostBack)
             {
                 Repository repository = new Repository();
-                int gameId;
-                if (int.TryParse(Request.Form["remove"], out gameId))
+                int productId;
+                if (int.TryParse(Request.Form["remove"], out productId))
                 {
-                    Product gameToRemove = repository.Products
-                        .Where(g => g.ProductId == gameId).FirstOrDefault();
-                    if (gameToRemove != null)
+                    Product productToRemove = repository.Products
+                        .Where(g => g.ProductId == productId).FirstOrDefault();
+                    if (productToRemove != null)
                     {
-                        SessionHelper.GetCart(Session).RemoveLine(gameToRemove);
+                        SessionHelper.GetCart(Session).RemoveLine(productToRemove);
                     }
                 }
             }
@@ -46,6 +47,14 @@ namespace CyberBabushka.Pages
             get
             {
                 return SessionHelper.Get<string>(Session, SessionKey.RETURN_URL);
+            }
+        }
+        public string CheckoutUrl
+        {
+            get
+            {
+                return RouteTable.Routes.GetVirtualPath(null, "checkout",
+                    null).VirtualPath;
             }
         }
     }
