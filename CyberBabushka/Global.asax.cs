@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.Routing;
+using System.Data.Entity;
+using CyberBabushka.Models.Repository;
 
 namespace CyberBabushka
 {
@@ -14,6 +16,7 @@ namespace CyberBabushka
         protected void Application_Start(object sender, EventArgs e)
         {
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            Database.SetInitializer<EFDbContext>(null);
         }
 
         protected void Session_Start(object sender, EventArgs e)
