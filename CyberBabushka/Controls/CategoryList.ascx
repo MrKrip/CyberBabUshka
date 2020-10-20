@@ -1,1 +1,7 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CategoryList.ascx.cs" Inherits="CyberBabushka.Controls.CategoryList" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CategoryList.ascx.cs" 
+   Inherits="CyberBabushka.Controls.CategoryList" %>
+<%= CreateHomeLinkHtml() %>
+
+<% foreach (string category in GetCategories()) {
+       Response.Write(CreateLinkHtml(category));       
+}%>

@@ -27,6 +27,7 @@ namespace CyberBabushka.Pages
         {
             get
             {
+                int prodCount = FilterProducts().Count();
                 return (int)Math.Ceiling((decimal)repository.Products.Count() / pageSize);
             }
         }
@@ -38,13 +39,23 @@ namespace CyberBabushka.Pages
                 Request.QueryString["page"];
             return reqValue != null && int.TryParse(reqValue, out page) ? page : 1;
         }
+        
 
         protected IEnumerable<Product> GetProducts()
         {
-            return repository.Products
+            return FilterProducts()
                 .OrderBy(g => g.ProductId)
                 .Skip((CurrentPage - 1) * pageSize)
                 .Take(pageSize); ;
+        }
+
+        private IEnumerable<Product> FilterProducts()
+        {
+            IEnumerable<Product> products = repository.Products;
+            string currentCategory = (string)RouteData.Values["category"] ??
+                Request.QueryString["category"];
+            return currentCategory == null ? products :
+                products.Where(p => p.Category == currentCategory);
         }
 
         protected void Page_Load(object sender, EventArgs e)

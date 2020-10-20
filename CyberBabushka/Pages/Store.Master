@@ -1,26 +1,25 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Store.master.cs" Inherits="CyberBabushka.Pages.Store" %>
-
+<%@ Register TagPrefix="GS" TagName="CategoryLinks" Src="~/Controls/CategoryList.ascx" %>
 <!DOCTYPE html>
 
-<html>
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>CyberBabUshka</title>
-     <link rel="stylesheet" href="/Content/Styles.css" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Cyber Babushka</title>
+    <link rel="stylesheet" href="/Content/Styles.css" />
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <div id="header">
-            <div class="title">CyberBabUshka - магазин. Просто лучший магазин.</div>
-        </div>
-        <div id="categories">
-            Мы добавим сюда контент позже
-        </div>
         <div>
-            <asp:ContentPlaceHolder ID="bodyContent" runat="server" />
+            <div id="header">
+                <div class="title">Cyber Babushka - магазин где можно попробовать купить всякого </div>
+            </div>
+            <div id="categories">
+                <GS:CategoryLinks runat="server" />
+            </div>
+            <div>
+                <asp:ContentPlaceHolder ID="bodyContent" runat="server" />
+            </div>
         </div>
-    </div>
     </form>
 </body>
 </html>
