@@ -6,7 +6,7 @@
         <table id="cartTable">
             <thead>
                 <tr>
-                    <th>Кол-во продуктов</th>
+                    <th>Кол-во игр</th>
                     <th>Название</th>
                     <th>Цена</th>
                     <th>Общая стоимость</th>
@@ -22,6 +22,11 @@
                             <td><%# Item.Product.Price.ToString("c")%></td>
                             <td><%# ((Item.Quantity * 
                                 Item.Product.Price).ToString("c"))%></td>
+                            <td>
+                                <button type="submit" class="actionButtons" name="remove"
+                                    value="<%#Item.Product.ProductId %>">
+                                    Удалить</button>
+                            </td>
                         </tr>
                     </ItemTemplate>
                 </asp:Repeater>

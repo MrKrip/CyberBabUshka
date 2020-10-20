@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using CyberBabushka.Models.Repository;
+using System.Web.Routing;
 using CyberBabushka.Models;
 using CyberBabushka.Pages.Helpers;
 
@@ -9,7 +12,20 @@ namespace CyberBabushka.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (IsPostBack)
+            {
+                Repository repository = new Repository();
+                int gameId;
+                if (int.TryParse(Request.Form["remove"], out gameId))
+                {
+                    Product gameToRemove = repository.Products
+                        .Where(g => g.ProductId == gameId).FirstOrDefault();
+                    if (gameToRemove != null)
+                    {
+                        SessionHelper.GetCart(Session).RemoveLine(gameToRemove);
+                    }
+                }
+            }
         }
 
         public IEnumerable<CartLine> GetCartLines()

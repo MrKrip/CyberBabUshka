@@ -1,5 +1,6 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Store.master.cs" Inherits="CyberBabushka.Pages.Store" %>
-<%@ Register TagPrefix="GS" TagName="CategoryLinks" Src="~/Controls/CategoryList.ascx" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Store.master.cs" 
+   Inherits="CyberBabushka.Pages.Store" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -11,7 +12,8 @@
     <form id="form1" runat="server">
         <div>
             <div id="header">
-                <div class="title">Cyber Babushka - магазин где можно попробовать купить всякого </div>
+                <GS:CartSummary runat="server" />
+                <div class="title">Cyber Babushka - магазин всяких типо нужных вещей</div>
             </div>
             <div id="categories">
                 <GS:CategoryLinks runat="server" />

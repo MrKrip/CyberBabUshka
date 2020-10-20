@@ -416,6 +416,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Styles.css" />
+    <Content Include="Controls\CartSummary.ascx" />
     <Content Include="Controls\CategoryList.ascx" />
     <Content Include="Global.asax" />
     <Content Include="Pages\CartView.aspx" />
@@ -424,6 +425,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controls\CartSummary.ascx.cs">
+      <DependentUpon>CartSummary.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\CartSummary.ascx.designer.cs">
+      <DependentUpon>CartSummary.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CategoryList.ascx.cs">
       <DependentUpon>CategoryList.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
