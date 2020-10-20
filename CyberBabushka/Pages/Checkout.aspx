@@ -18,7 +18,7 @@
             <h3>Заказчик</h3>
             <div>
                 <label for="name">Имя:</label>
-                <input id="name" name="name" />
+                <input id="name" name="name" data-val="true" data-val-required="Введите имя"/>
             </div>
 
             <h3>Адрес доставки</h3>
