@@ -41,7 +41,7 @@ namespace CyberBabushka.Pages
         }
         
 
-        public IEnumerable<Product> GetProducts()
+        protected IEnumerable<Product> GetProducts()
         {
             return FilterProducts()
                 .OrderBy(g => g.ProductId)
