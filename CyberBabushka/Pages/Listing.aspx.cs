@@ -31,6 +31,14 @@ namespace CyberBabushka.Pages
             }
         }
 
+        private int GetPageFromRequest()
+        {
+            int page;
+            string reqValue = (string)RouteData.Values["page"] ??
+                Request.QueryString["page"];
+            return reqValue != null && int.TryParse(reqValue, out page) ? page : 1;
+        }
+
         protected IEnumerable<Product> GetProducts()
         {
             return repository.Products
