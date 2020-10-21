@@ -475,6 +475,7 @@
     <Compile Include="Controls\CategoryList.ascx.designer.cs">
       <DependentUpon>CategoryList.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\VInput .cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
