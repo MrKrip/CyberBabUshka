@@ -1,3 +1,6 @@
 /packages
 /CyberBabushka/Web.config
 .vs
+CyberBabushka/obj/Debug/CyberBabushka.csprojAssemblyReference.cache
+.vs/CyberBabushka/v16/.suo
+.vs/CyberBabushka/config/applicationhost.config
