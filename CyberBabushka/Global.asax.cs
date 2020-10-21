@@ -8,6 +8,7 @@ using System.Data.Entity;
 using CyberBabushka.Models.Repository;
 using System.Web.Routing;
 using System.Web.Optimization;
+using System.Web.Http;
 
 namespace CyberBabushka
 {
@@ -15,11 +16,12 @@ namespace CyberBabushka
     {
 
         protected void Application_Start(object sender, EventArgs e)
-        {
+        {            
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             Database.SetInitializer<EFDbContext>(null);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
+            GlobalConfiguration.Configure(WebApiConfig.Register);
+            SwaggerConfig.Register();
         }
 
         protected void Session_Start(object sender, EventArgs e)
