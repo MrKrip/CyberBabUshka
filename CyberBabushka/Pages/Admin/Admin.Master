@@ -6,11 +6,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link rel="stylesheet" href="~/Content/Admin.css" />
+    <link rel="stylesheet" href="~/Content/AdminStyles.css" />
 </head>
 <body>
     <form id="form1" runat="server">
-        <h1>GameStore: админ-панель</h1>
+        <h1>CyberBabushka: админ-панель</h1>
         <div class="adminContent">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
 
@@ -19,7 +19,7 @@
     </form>
     <div id="nav">
         <a href="<%= OrdersUrl %>">Управление заказами</a>
-        <a href="<%= ProductsUrl %>">Управление каталогом игр</a>
+        <a href="<%= ProductsUrl %>">Управление каталогом товаров</a>
     </div>
 </body>
 </html>
