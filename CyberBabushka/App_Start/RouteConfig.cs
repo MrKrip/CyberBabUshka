@@ -23,6 +23,7 @@ namespace CyberBabushka
             
             routes.MapPageRoute("admin_orders", "admin/orders", "~/Pages/Admin/Orders.aspx");
             routes.MapPageRoute("admin_products", "admin/products", "~/Pages/Admin/Products.aspx");
+            routes.MapPageRoute("Login", "Login", "~/Pages/Login.aspx");
         }
     }
 }
