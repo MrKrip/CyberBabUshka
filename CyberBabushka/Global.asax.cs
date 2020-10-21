@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using System.Data.Entity;
+using CyberBabushka.Models.Repository;
 using System.Web.Routing;
 using System.Web.Optimization;
 
@@ -15,7 +17,9 @@ namespace CyberBabushka
         protected void Application_Start(object sender, EventArgs e)
         {
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            Database.SetInitializer<EFDbContext>(null);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
         }
 
         protected void Session_Start(object sender, EventArgs e)
