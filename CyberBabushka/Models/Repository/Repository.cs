@@ -23,6 +23,42 @@ namespace CyberBabushka.Models.Repository
             }
         }
 
+        public void SaveProduct(Product product)
+        {
+            if (product.ProductId == 0)
+            {
+                product = context.Products.Add(product);
+            }
+            else
+            {
+                Product dbProduct = context.Products.Find(product.ProductId);
+                if (dbProduct != null)
+                {
+                    dbProduct.Name = product.Name;
+                    dbProduct.Description = product.Description;
+                    dbProduct.Price = product.Price;
+                    dbProduct.Category = product.Category;
+                }
+            }
+            context.SaveChanges();
+        }
+
+        public void DeleteProduct(Product product)
+        {
+            IEnumerable<Order> orders = context.Orders
+                .Include(o => o.OrderLines.Select(ol => ol.Product))
+                .Where(o => o.OrderLines
+                    .Count(ol => ol.Product.ProductId == product.ProductId) > 0)
+                .ToArray();
+
+            foreach (Order order in orders)
+            {
+                context.Orders.Remove(order);
+            }
+            context.Products.Remove(product);
+            context.SaveChanges();
+        }
+
         // Сохранить данные заказа в базе данных
         public void SaveOrder(Order order)
         {
